@@ -12,6 +12,7 @@ from sklearn.model_selection import cross_val_score, GridSearchCV, cross_validat
 from sklearn.preprocessing import LabelEncoder
 from textblob import Word, TextBlob
 from wordcloud import WordCloud
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 filterwarnings('ignore')
 pd.set_option('display.max_columns', None)
@@ -192,11 +193,6 @@ df["sentiment_label"] = LabelEncoder().fit_transform(df["sentiment_label"])
 
 y = df["sentiment_label"]
 X = df["Review Text"]
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import GridSearchCV
-
 
 vectorizer = TfidfVectorizer()
 X_vect = vectorizer.fit_transform(X)
